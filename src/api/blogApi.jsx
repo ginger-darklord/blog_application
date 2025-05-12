@@ -25,4 +25,17 @@ export const getAll = async () => {
         console.error("Error getting blogs from database ble", error);
         throw error;
     }
+
+};
+
+export const deleteBlog = async (id) => {
+  try {
+      const response = await axios.delete(`${API_BASE_URL}/delete/${id}`, {
+          headers: { "Content-Type": "application/json" }
+      });
+      return response.data;
+  }  catch (error) {
+      console.error("Error blog could not be deleted. Try again.", error);
+      throw error;
+  }
 };
